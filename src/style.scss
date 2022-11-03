@@ -1,0 +1,187 @@
+// from google fonts
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+//*Palette Settings
+$black: #000000;
+$white: #ffffff;
+$blue: #3B8AB0;
+
+//*Font settings
+
+@mixin txt {
+  font-family: 'Cabin', sans-serif;
+}
+
+.txt-biggest {
+  @include txt;
+  font-weight: 700;
+  font-size: 4.5rem;
+}
+
+.txt-bigger {
+  @include txt;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+.txt-big {
+  @include txt;
+  font-weight: 500;
+  font-size: 2.375rem;
+}
+
+.txt-medium {
+  @include txt;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.txt-regular {
+  @include txt;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.txt-small {
+  @include txt;
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
+//*UI Settings
+
+.btn {
+  width: fit-content;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  background-color: $black;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition: 0.4s;
+
+  &:hover {
+    background-color: $blue;
+  }
+}
+
+//*General
+
+@function getVH($vh) {
+  @return calc(var(--vh, 1vh) * $vh);
+}
+
+.col-white {
+  color: $white;
+}
+
+.col-black {
+  color: $black;
+}
+
+a {
+  text-decoration: none;
+}
+
+.underlined{
+  text-decoration: underline;
+}
+
+//*Specific
+
+#hero {
+  display: table-cell;
+  vertical-align: middle;
+
+  height: 100vh;
+  height: getVH(100);
+
+  padding-left: 6.75rem;
+  padding-right: 6.75rem;
+}
+
+nav {
+  top: 6.75rem;
+  margin-left: 6.75rem;
+  position: -webkit-sticky;
+  position: sticky;
+
+  display: flex;
+  gap: 1.25rem;
+
+  .element {
+    align-self: center;
+
+    a {
+      transition: 0.4s;
+
+      img {
+        transition: inherit;
+
+        &:hover {
+          //https://codepen.io/sosuke/pen/Pjoqqp
+          filter: invert(50%) sepia(56%) saturate(522%) hue-rotate(155deg) brightness(86%) contrast(84%);
+        }
+      }
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    p>img {
+      transition: 0.4s;
+      cursor: pointer;
+
+      &:hover {
+        //https://codepen.io/sosuke/pen/Pjoqqp
+        filter: invert(50%) sepia(56%) saturate(522%) hue-rotate(155deg) brightness(86%) contrast(84%);
+      }
+    }
+
+  }
+}
+
+#main {
+  transition: 0.4s;
+}
+
+#langSide {
+  top: 0;
+  margin-left: -16rem;
+  position: fixed;
+
+  height: 100vh;
+  height: getVH(100);
+  width: 16rem;
+
+  background-color: $black;
+  transition: 0.4s;
+
+  display: grid;
+  place-content: center;
+  gap: 1.5rem;
+
+  #langSide__lang{
+    display: grid;
+    grid-template-columns: repeat(1fr, 2);
+    gap: 0.2rem;
+  }
+
+  *:not(.lang_title) {
+    cursor: pointer;
+  }
+}
