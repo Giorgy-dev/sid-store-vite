@@ -39,7 +39,7 @@ loadText(IDs);
 
 function loadText(pageIDs: Map<any, string>): void {
 
-    let data: string = getFileContent('/languages/' + getLanguage() + '.json')!;
+    let data: any = getFileContent('/languages/' + getLanguage() + '.json')!;
 
     pageIDs.forEach((value: string, key: any) => {
         key != null && value != null && value.length > 0 ? key.innerHTML = data[value] + '' : data['en'] + '';
