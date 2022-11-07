@@ -96,7 +96,7 @@ a {
   text-decoration: none;
 }
 
-.underlined{
+.underlined {
   text-decoration: underline;
 }
 
@@ -175,7 +175,7 @@ nav {
   place-content: center;
   gap: 1.5rem;
 
-  #langSide__lang{
+  #langSide__lang {
     display: grid;
     grid-template-columns: repeat(1fr, 2);
     gap: 0.2rem;
@@ -183,5 +183,44 @@ nav {
 
   *:not(.lang_title) {
     cursor: pointer;
+  }
+}
+
+#back_from_lang {
+
+  display: flex;
+  vertical-align: center;
+
+  gap: 0.25rem;
+  background-color: $white;
+
+  * {
+    transition: 0.4s;
+    color: $black;
+  }
+
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover {
+    * {
+      color: $blue;
+      filter: invert(50%) sepia(56%) saturate(522%) hue-rotate(155deg) brightness(86%) contrast(84%);
+    }
+  }
+}
+
+//*SCRIPTS
+.bubble{
+  background-color: $black;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  transition: 0.4s;
+
+  &:hover{
+    scale: 1.2;
   }
 }

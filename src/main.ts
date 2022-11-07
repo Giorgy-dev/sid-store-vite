@@ -4,6 +4,10 @@ import './style.scss';
 //LANG IDs
 import IDs from './lang/indexIDs.js';
 
+import createBubbles from "./scripts/bubbles.js";
+createBubbles(3, 3);
+
+
 //*VH FIX
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -47,7 +51,7 @@ function loadText(pageIDs: Map<any, string>): void {
 }
 
 //*LANGUAGE SWITCHER
-var langOpen:boolean = false;
+var langOpen: boolean = false;
 document.getElementById("lang")!.addEventListener("click", () => !langOpen ? openLangSide() : closeLangSide());
 document.getElementById("back_from_lang")!.addEventListener("click", () => !langOpen ? openLangSide() : closeLangSide());
 
@@ -56,6 +60,7 @@ function openLangSide() {
     document.getElementById("main")!.style.marginLeft = "16rem";
     document.getElementById("main")!.style.filter = "blur(4px)";
     langOpen = true;
+    disableScroll();
 }
 
 function closeLangSide() {
@@ -63,6 +68,7 @@ function closeLangSide() {
     document.getElementById("main")!.style.marginLeft = "0";
     document.getElementById("main")!.style.filter = "blur(0px)";
     langOpen = false;
+    enableScroll();
 }
 
 document.getElementById('langSide__lang__en')!.addEventListener('click', () => {
@@ -82,3 +88,26 @@ document.getElementById('langSide__lang__es')!.addEventListener('click', () => {
     loadText(IDs);
     closeLangSide();
 });
+
+
+//* DISABLE SCROLL
+function disableScroll() {
+    var TopScroll = window.pageYOffset || document.documentElement.scrollTop;
+    var LeftScroll = window.pageXOffset || document.documentElement.scrollLeft;
+
+    window.onscroll = function () {
+        window.scrollTo(LeftScroll, TopScroll);
+    };
+
+    //Safer to use addEventListener
+    document.querySelector('body')!.style.overflow = 'hidden';
+    document.querySelector('body')!.style.height = '100%';
+}
+
+function enableScroll() {
+    window.onscroll = () => { };
+
+    //Safer to use addEventListener
+    document.querySelector('body')!.style.overflow = 'auto';
+    document.querySelector('body')!.style.height = 'auto';
+}
